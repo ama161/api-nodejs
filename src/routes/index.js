@@ -11,4 +11,9 @@ router.get('/contact', (req, res)=> {
     res.render('contact', {title: 'Page contact'});
 });
 
+router.post('/new-contact', (req, res) => {
+    console.log(req.body);
+    res.send('received');
+});
+
 module.exports = router;
