@@ -6,7 +6,11 @@ controller.get = (req, res) => {
             if(err) 
                 res.json(err);
             else if(users){
-                res.json(users);
+                // res.json(users);
+                res.render('user', {
+                    title: "users",
+                    data: users
+                })
             }
             console.log(users);
         });

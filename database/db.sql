@@ -14,3 +14,4 @@ SHOW TABLES;
 describe user;
 
 INSERT INTO user (name, address, phone) VALUES ('andrea', 'c/ Mdc. Marco nº 3', '123456789');
+INSERT INTO user (name, address, phone) VALUES ('jorge', 'c/ Sorian nº12', '987654321');

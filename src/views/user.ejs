@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> <%= title %></title>
+    <%- include('partials/head.html') %>
+</head>
+
+<body>
+    <%- include('partials/navigation') %>
+    <h3>USERS PAGE</h3>
+    <div class="container">
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% data.forEach((user) => { %>
+                    <tr>
+                        <th scope="row"> <%= user.id %> </th>
+                        <th> <%= user.name %> </th>
+                        <th> <%= user.address %> </th>
+                        <th> <%= user.phone %> </th>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
