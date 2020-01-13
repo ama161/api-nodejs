@@ -10,4 +10,8 @@ controller.getViewContact = (req, res)=> {
     res.render('contact', {title: 'Page contact'});
 };
 
+controller.getViewUsers = (req, res)=> {
+    res.render('about', {title: 'User Page', data: []});
+};
+
 module.exports = controller;
