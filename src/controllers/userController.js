@@ -1,6 +1,6 @@
 const controller = {};
 
-controller.get = (req, res) => {
+controller.getUsers = (req, res) => {
     req.getConnection((err, conn) => {
         conn.query('SELECT * FROM user', (err, users) => {
             if(err) 
@@ -13,6 +13,18 @@ controller.get = (req, res) => {
                 })
             }
             console.log(users);
+        });
+    });
+};
+
+controller.newUser = (req, res) => {
+    console.log(req.body);
+    // res.send('received');
+    req.getConnection((err, conn) => {
+        conn.query('INSERT INTO user set ?', [req.body], (err, users) => {
+            console.log(err);
+            console.log(users);
+            res.redirect('/user');
         });
     });
 };
