@@ -1,6 +1,5 @@
 // Connect BBDD without express-myconnection
 const mysql = require('mysql');
-const myConnection = require('express-myconnection');
 
 const BDconfig = {
     host     : 'localhost',
@@ -23,9 +22,11 @@ connection.connect(function(err) {
   console.log('connected');
 });
 
-connection.query('SELECT * FROM user', (err, res) => {
-    if(err)
-        console.log(err);
-    if(res)
-        console.log(res);
-})
+// connection.query('SELECT * FROM user', (err, res) => {
+//     if(err)
+//         console.log(err);
+//     if(res)
+//         console.log(res);
+// });
+
+module.exports = () => connection;

@@ -1,63 +1,57 @@
+const db = require('../connectionBBDD');
+const connection = db();
 const controller = {};
 
 controller.getUsers = (req, res) => {
-    req.getConnection((err, conn) => {
-        conn.query('SELECT * FROM user', (err, users) => {
-            if(err) 
-                res.json(err);
-            else if(users){
-                res.json(users);
-                // res.render('user', {
-                //     title: "users",
-                //     data: users
-                // })
-            }
-        });
+    connection.query('SELECT * FROM user', (err, users) => {
+        if(err) 
+            res.json(err);
+        else if(users){
+            res.json(users);
+        }
     });
 };
 
 controller.getUserById = (req, res) => {
-    req.getConnection((err, conn) => {
-        conn.query('SELECT * FROM user WHERE id = ?',[req.params.id], (err, user) => {
-            if(err) 
-                res.json(err);
-            else if(user){
-                res.json(user);
-            }
-        });
+    connection.query('SELECT * FROM user WHERE id = ?',[req.params.id], (err, user) => {
+        if(err) 
+            res.json(err);
+        else if(user){
+            res.json(user);
+        }
     });
 };
 
 controller.newUser = (req, res) => {
-    console.log(req.body);
-    // res.send('received');
-    req.getConnection((err, conn) => {
-        conn.query('INSERT INTO user set ?', [req.body], (err, users) => {
-            console.log(err);
-            res.redirect('/user');
-        });
+    connection.query('INSERT INTO user set ?', [req.body], (err, result) => {
+        if(err) 
+            res.json(err);
+        else if(result){
+            // res.json(result);
+            res.redirect('/about');
+        }
     });
 };
 
 controller.deleteUser = (req, res) => {
-    console.log(req.params.id);
-    // res.send('received');
-    req.getConnection((err, conn) => {
-        conn.query('DELETE from user WHERE id = ?', [req.params.id], (err, users) => {
-            if(!err)
-                res.redirect('/user');
-        });
+    connection.query('DELETE from user WHERE id = ?', [req.params.id], (err, result) => {
+        if(err) 
+            res.json(err);
+        else if(result){
+            // res.json(result);
+            res.redirect('/about');
+        }
     });
 };
 
 controller.editUser = (req, res) => {
-    console.log(req.params.id);
-    // res.send('received');
-    req.getConnection((err, conn) => {
-        conn.query('UPDATE user set ? WHERE id = ?', [req.body, req.params.id], (err, users) => {
-            if(!err)
-                res.redirect('/user');
-        });
+    connection.query('UPDATE user set ? WHERE id = ?', [req.body, req.params.id], (err, result) => {
+        if(err) 
+            res.json(err);
+        else if(result){
+            // res.json(result);
+            res.redirect('/about');
+        }
     });
 };
 
